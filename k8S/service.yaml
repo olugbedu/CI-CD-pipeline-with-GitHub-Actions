@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: adedeji-portfolio
 spec:
+  type: NodePort
   selector:
     app: adedeji-portfolio
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
-  type: LoadBalancer
+      nodePort: 30007  # NodePort range is typically 30000-32767
