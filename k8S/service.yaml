@@ -1,13 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: adedeji-portfolio-service
+  name: adedeji-portfolio
 spec:
-  type: ClusterIP
   selector:
-    app: kodecamp-app
+    app: adedeji-portfolio
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8000
-  
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
