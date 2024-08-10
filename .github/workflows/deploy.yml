@@ -28,7 +28,7 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/adedeji-portfolio:latest
 
     - name: SSH into EC2
-      uses: appleboy/ssh-action@vmaster
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.EC2_PUBLIC_IP }}
         username: ubuntu
