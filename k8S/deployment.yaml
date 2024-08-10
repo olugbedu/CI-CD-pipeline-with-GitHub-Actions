@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kodecamp-app
+  name: adedeji-portfolio
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kodecamp-app
+      app: adedeji-portfolio
   template:
     metadata:
       labels:
-        app: kodecamp-app
+        app: adedeji-portfolio
     spec:
       containers:
-      - name: kodecamp-app
-        image: gbedu/kodecamp-app
+      - name: adedeji-portfolio
+        image: gbedu/adedeji-portfolio
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
