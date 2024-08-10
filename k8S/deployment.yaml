@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: adedeji-portfolio
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: adedeji-portfolio
@@ -18,10 +18,10 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
-        # resources:
-        #     requests:
-        #         memory: "128Mi"
-        #         cpu: "250m"
-        #     limits:
-        #         memory: "256Mi"
-        #         cpu: "500m"
+        resources:
+            requests:
+                memory: "128Mi"
+                cpu: "250m"
+            limits:
+                memory: "256Mi"
+                cpu: "500m"
