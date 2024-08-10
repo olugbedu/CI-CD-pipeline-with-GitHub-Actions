@@ -36,8 +36,8 @@ jobs:
 
     - name: Deploy to Minikube
       run: |
-        kubectl apply -f k8S/deployment.yaml --validate=false
-        kubectl apply -f k8S/service.yaml --validate=false
+        kubectl apply -f k8S/deployment.yaml 
+        kubectl apply -f k8S/service.yaml 
       shell: bash
       continue-on-error: true
 
