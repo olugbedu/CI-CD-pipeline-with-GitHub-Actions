@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: adedeji-portfolio
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: adedeji-portfolio
@@ -15,5 +15,13 @@ spec:
       containers:
       - name: adedeji-portfolio
         image: gbedu/adedeji-portfolio:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 8000
+        resources:
+            requests:
+                memory: "128Mi"
+                cpu: "250m"
+            limits:
+                memory: "256Mi"
+                cpu: "500m"
