@@ -35,7 +35,7 @@
 - Run the appropriate Terraform commands in your terminal. ![](images/terraform-apply.png)
 
 #### Step 4: Access the Minikube Cluster
-- SSH into the created EC2 instance using the public IP output from Terraform. Inside the EC2 instance, I installed docker as the driver, changed my user mode for docker with the command `sudo usermod -aG docker $USER`, configured kubectl to use the Minikube cluster. Then I cloned my git repo into the instance, and applied the k8s manifests and ensured it runs perfectly. Here are screenshots of the steps and commonds.
+- SSH into the created EC2 instance using the public IP output from Terraform. Inside the EC2 instance, I installed docker as the driver, changed my user mode for docker with the command `sudo usermod -aG docker $USER`, configured kubectl to use the Minikube cluster. Then I cloned my git repo into the instance, and applied the k8s manifests and ensured it runs perfectly. Here are screenshots of the steps and commands.
 `sudo apt update`
     ![ssh client](images/ssh-in.png)
 `sudo apt-get install docker.io -y`
