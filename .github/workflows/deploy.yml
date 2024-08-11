@@ -47,6 +47,5 @@ jobs:
       run: |
         kubectl get deployment
         kubectl get svc
-        kubectl port-forward service/adedeji-portfolio 8080:80
       shell: bash
       continue-on-error: true
