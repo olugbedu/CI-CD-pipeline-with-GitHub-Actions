@@ -96,6 +96,8 @@ jobs:
 ## 2. Screenshots of your results from each step
 GitHub Action
 ![](images/action6.png)
+![](images/verify-deployment.png)
+![](images/verify.png)
 ![](images/action1.png)
 ![](images/action2.png)
 ![](images/action3.png)
