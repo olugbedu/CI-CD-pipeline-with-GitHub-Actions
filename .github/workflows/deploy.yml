@@ -36,6 +36,7 @@ jobs:
 
     - name: Deploy to Minikube
       run: |
+        git clone https://github.com/olugbedu/CI-CD-pipeline-with-GitHub-Actions.git
         minikube start
         kubectl config use-context minikube
         kubectl apply -f k8S/deployment.yaml 
