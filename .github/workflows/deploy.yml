@@ -36,7 +36,6 @@ jobs:
 
     - name: Deploy to Minikube
       run: |
-        git clone https://github.com/olugbedu/CI-CD-pipeline-with-GitHub-Actions.git
         minikube start
         kubectl config use-context minikube
         kubectl apply -f k8S/deployment.yaml 
@@ -46,7 +45,7 @@ jobs:
 
     - name: Verify Deployment
       run: |
-        kubectl get pods
+        kubectl get deployment
         kubectl get svc
       shell: bash
       continue-on-error: true
