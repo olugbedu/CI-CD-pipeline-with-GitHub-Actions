@@ -35,12 +35,18 @@
 - Run the appropriate Terraform commands in your terminal. ![](images/terraform-apply.png)
 
 #### Step 4: Access the Minikube Cluster
-- SSH into the created EC2 instance using the public IP output from Terraform. Inside the EC2 instance, I configured kubectl to use the Minikube cluster. I did that by running the `kubectl config use-context minikube` command
+- SSH into the created EC2 instance using the public IP output from Terraform. Inside the EC2 instance, I installed docker as the driver, changed my user mode for docker with the command `sudo usermod -aG docker $USER`, configured kubectl to use the Minikube cluster. Then I cloned my git repo into the instance, and applied the k8s manifests and ensured it runs perfectly. Here are screenshots of the steps and commonds.
+`sudo apt update`
     ![ssh client](images/ssh-in.png)
+`sudo apt-get install docker.io -y`
     ![ssh client](images/dockerinstall.png)
     ![ssh client](images/ssh-cli.png)
+   ` minikube start`
     ![ssh client](images/minikube-start.png)
     ![ssh client](images/minikube-status.png)
+    ![](images/verify.png)
+    ![](images/port-forward.png)
+    ![](images/port-8000.png)
 
 #### Step 5: Automate Deployment with GitHub Actions
 - Update the GitHub Actions [workflow](https://github.com/olugbedu/CI-CD-pipeline-with-GitHub-Actions/blob/main/.github/workflows/deploy.yml) to deploy to the Minikube cluster on the EC2 instance. Ensure the Minikube instance's IP and SSH keys are securely managed. 
