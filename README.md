@@ -1,11 +1,11 @@
 # CI/CD pipeline with GitHub Actions
-The Objective of this project is to explain a step by step guide on how to set up a CI/CD pipeline with GitHub Actions to deploy any application of your choice (in this case a python FastAPI) from GitHub to a Minikube cluster, that running on an EC2 instance deployed using Terraform. You can picture the flow this way:
+The Objective is to explain a step-by-step guide on how to set up a CI/CD pipeline with GitHub Actions to deploy any application of your choice (in this case a python FastAPI) from GitHub to a Minikube cluster, that running on an EC2 instance deployed using Terraform. You can picture the flow this way:
 `GitHub` -> `AWS EC2` -> `Minikube`
 
 #### Step 1: Prepared the Code Repository
-- Created a new [repository](https://github.com/olugbedu/CI-CD-pipeline-with-GitHub-Actions) on GitHub.
+- Create a new [repository](https://github.com/olugbedu/CI-CD-pipeline-with-GitHub-Actions) on GitHub.
 - Add your [application](./main.py) code to the repository. 
-- Step up the environments and dependencies of your application
+- Step up the environments and dependencies for your application
 - Add your [Dockerfile](./Dockerfile) for the application, to containerize it.
 
 #### Step 2: Set Up GitHub Actions
@@ -38,16 +38,17 @@ build-image:
 ![](images/port-8000.png)
 
 #### Step 3: Set Up Terraform for EC2 and Minikube
+
+Click [here](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) to know more about how to write terraform modules
 In your code editor (VS code)
-- Create terraform [modules](./modules/) for your [EC2](./modules/ec2/), [VPC](./modules/vpc/)
+- Create terraform [modules](./modules/) for your [EC2](./modules/ec2/) and [VPC](./modules/vpc/)
+- Write a shell [script](./modules/ec2/scripts/install_minikube.sh) to `configure kubectl` and `install minikube` in the EC2 instance
+  ![](images/script.png)
 - Create [root modules](main.tf)
-- Create an EC2 instance with [Minikube](./modules/ec2/scripts/install_minikube.sh) running on it
 - Ensure to create of attach a `keypair` in your modules
 - Include `Public_ip` in the `output` of the `root` module
 - Run the `terraform plan` and `terraform apply` commands.
  ![](images/terraform-apply.png)
-
-Click [here](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) to know more about how to write terraform modules
 
 #### Step 4: Access the Minikube Cluster
 To `SSH` into the created EC2 instance using the `public IP` output from Terraform.
