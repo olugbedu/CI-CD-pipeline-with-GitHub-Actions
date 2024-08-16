@@ -3,21 +3,23 @@ provider "aws" {
 }
 
 resource "aws_instance" "minikube" {
-  ami           = var.ami
-  instance_type = var.instance_type
-  subnet_id     = var.subnet_id
-  key_name      = var.key_name
+  ami                         = var.ec2.ami
+  instance_type               = var.ec2.instance_type
+  subnet_id                   = var.ec2.subnet_id
+  key_name                    = var.ec2.key_name
+  associate_public_ip_address = true
 
   tags = {
     Name = "minikube-ec2"
   }
+
+  vpc_security_group_ids  = [aws_security_group.minikube_sg.id]
   
   user_data = file("${path.module}/scripts/install_minikube.sh")
-
 }
 
 resource "aws_security_group" "minikube_sg" {
-  vpc_id = var.vpc_id
+  vpc_id = var.ec2.vpc_id
 
   ingress {
     from_port   = 22
